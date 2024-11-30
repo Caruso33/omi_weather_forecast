@@ -357,8 +357,25 @@ def get_weather():
 
 
 def generate_forecast_text(daily_forecast):
-    # Implement your forecast text generation logic here
-    return "Forecast text based on daily forecast data"
+    # Convert the forecast response into a nice text using OpenAI
+    openai.api_key = os.getenv("OPENAI_API_KEY")  # Ensure to set your OpenAI API key securely
+    prompt = f"Convert the following forecast data into a friendly text which will be read: {daily_forecast}"
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are Omi, a helpful AI assistant. Provide clear, concise, and friendly responses.",
+            },
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.7,
+        max_tokens=250,
+        timeout=30,
+    )
+
+    forecast_text = response.choices[0].message.content.strip()
+    return forecast_text
 
 
 # Function to get weather forecast based on city and country
