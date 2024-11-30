@@ -1,0 +1,1 @@
+web: python -m omi_weather_forecast_python.omi_weather_forecast.weather_omi
