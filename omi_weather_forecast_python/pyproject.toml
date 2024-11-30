@@ -12,6 +12,7 @@ requests = "^2.32.3"
 openai = "^1.55.3"
 python-dotenv = "^1.0.1"
 tenacity = "^9.0.0"
+gunicorn = "^23.0.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.10.0"
