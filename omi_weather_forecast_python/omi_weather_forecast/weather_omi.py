@@ -358,7 +358,6 @@ def get_weather():
 
 def generate_forecast_text(daily_forecast):
     # Convert the forecast response into a nice text using OpenAI
-    openai.api_key = os.getenv("OPENAI_API_KEY")  # Ensure to set your OpenAI API key securely
     prompt = f"Convert the following forecast data into a friendly text which will be read: {daily_forecast}"
     response = client.chat.completions.create(
         model="gpt-4",
